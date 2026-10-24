@@ -134,6 +134,8 @@ details.mehrbtn.warn{background:#faeeed;border-color:#ecd0cc}
 details.mehrbtn.warn>summary{color:var(--rose-dunkel)}
 .mehrin{padding:0 16px 12px;font-size:14.5px;line-height:1.65;color:#544a42}
 .mehrin p{margin:0 0 8px}
+.mehrin .meld{font-size:13.5px;margin:6px 0 0;color:var(--leise)}
+.mehrin .meld a{color:var(--salbei-dunkel);font-weight:700}
 .mehrin .klein{font-size:13px;color:var(--leise)}
 </style>
 </head>
@@ -818,7 +820,7 @@ const ALLG={
  autweg:'Dann entscheidest du mit dem Kopf, nach Pro und Contra, nach dem, was andere erwarten. Danach fühlt es sich oft falsch an, du bereust Zusagen, fühlst dich ausgelaugt oder steckst in Situationen, die nicht zu dir passen. Fang klein an und übe an kleinen Entscheidungen, zum Beispiel was du heute isst oder ob du zu einem Treffen gehst.',
  prof:'Das Profil sind zwei Zahlen. Die erste kommt von deiner bewussten Seite, die du an dir kennst. Die zweite von deiner unbewussten Seite, die andere oft früher an dir sehen. Zusammen beschreiben sie die Rolle, in der du unterwegs bist, wie du lernst und wie du auf andere wirkst.'
 };
-function mehr(titel,inhalt,cls){return inhalt?'<details class="mehrbtn'+(cls?' '+cls:'')+'"><summary>'+titel+'</summary><div class="mehrin">'+inhalt+'</div></details>':'';}
+function mehr(titel,inhalt,cls){return inhalt?'<details class="mehrbtn'+(cls?' '+cls:'')+'"><summary>'+titel+'</summary><div class="mehrin">'+inhalt+'<p class="meld">Du willst mehr wissen? <a href="https://wa.me/436764753114" target="_blank" rel="noopener">Meld dich</a></p></div></details>':'';}
 function mehrTyp(r){const T=MEHR.TYPEN[r.type]||{};
   return '<div class="mehrreihe">'+mehr('Was ist ein Energietyp?','<p>'+E(ALLG.typ)+'</p>'+(T.anteil?'<p class="klein">'+E(T.anteil)+'</p>':''))
    +mehr('Mehr über dich als '+E(r.type),MP(T.spr)+MP(T.text))
@@ -870,8 +872,8 @@ function render(r){
   </div>
 
   <div class="cta">
-    <h4>Du hast jetzt die Landkarte</h4>
-    <p>Ein Rechner zeigt dir, wie du gebaut bist. Er kennt aber nicht deine Situation, deine Muster
+    <h4>Du willst mehr wissen? Meld dich.</h4>
+    <p>Du hast jetzt die Landkarte. Ein Rechner zeigt dir, wie du gebaut bist. Er kennt aber nicht deine Situation, deine Muster
     und die Stellen, an denen du dir gerade selbst im Weg stehst. Genau das schauen wir uns im Reading
     gemeinsam an, in Ruhe und an deinem echten Leben entlang. Schreib mir, was dich beschäftigt,
     ich antworte dir persönlich.</p>
