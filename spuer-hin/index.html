@@ -1,0 +1,222 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Spür hin</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Lato:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --papier:#FAF4F2; --papier-2:#F3E9E4; --karte:#FFFFFF;
+    --sage:#8FA67A; --sage-d:#6E8459; --rosa:#D3B1C2; --rosa-d:#B07E98;
+    --mauve:#4A3040; --apricot:#F4C27E; --apricot-d:#C98F3E;
+    --tinte:#2C1F1A; --leise:#6E5F58; --linie:#EADFD9;
+    --serif:'Cormorant Garamond',Georgia,serif; --sans:'Lato',system-ui,sans-serif;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html,body{background:var(--papier);color:var(--tinte);font-family:var(--sans);line-height:1.5}
+  body{min-height:100vh;display:flex;justify-content:center;padding:26px 18px 60px}
+  .wrap{width:100%;max-width:440px}
+  .brand{text-align:center;margin-bottom:6px}
+  .brand .wm{font-family:var(--serif);font-weight:600;font-size:22px;letter-spacing:.02em;color:var(--mauve)}
+  .brand .wm em{font-style:italic;color:var(--rosa-d)}
+  .brand .ch{font-size:10px;letter-spacing:.22em;text-transform:uppercase;color:var(--sage-d);font-weight:700;margin-top:2px}
+  .card{background:var(--karte);border:1px solid var(--linie);border-radius:24px;padding:30px 24px;box-shadow:0 14px 34px -24px rgba(44,31,26,.45);margin-top:16px}
+  h1{font-family:var(--serif);font-weight:600;font-size:clamp(40px,12vw,54px);line-height:1;color:var(--mauve);text-align:center}
+  h1 em{font-style:italic;color:var(--rosa-d)}
+  .sub{text-align:center;font-size:12px;letter-spacing:.2em;text-transform:uppercase;color:var(--sage-d);font-weight:700;margin-top:12px}
+  .leit{font-family:var(--serif);font-style:italic;font-size:24px;line-height:1.3;color:var(--tinte);text-align:center;margin:22px 0 6px}
+  .leit b{font-style:normal;font-weight:600;color:var(--rosa-d)}
+  .intro-txt{font-size:16px;color:var(--leise);text-align:center;margin:18px 0 20px}
+  label.q{display:block;font-family:var(--serif);font-size:15px;color:var(--sage-d);font-weight:600;letter-spacing:.04em;text-transform:uppercase;margin-bottom:8px}
+  textarea{width:100%;border:1px solid var(--linie);border-radius:16px;padding:14px 16px;font-family:var(--sans);font-size:16px;color:var(--tinte);background:var(--papier);resize:vertical;min-height:84px}
+  textarea:focus{outline:2px solid var(--sage);outline-offset:1px}
+  .btn{display:block;width:100%;border:0;border-radius:999px;background:var(--sage);color:#fff;font-family:var(--sans);font-weight:700;font-size:17px;padding:16px 22px;cursor:pointer;text-align:center;text-decoration:none;margin-top:18px;transition:background .15s}
+  .btn:hover{background:var(--sage-d)}
+  .btn.rosa{background:var(--rosa-d)}
+  .btn.rosa:hover{background:#9c6a84}
+  .btn.ghost{background:transparent;color:var(--leise);border:1px solid var(--linie);font-weight:400;font-size:15px;padding:12px}
+  .btn.ghost:hover{background:var(--papier-2);color:var(--tinte)}
+  .dots{display:flex;gap:7px;justify-content:center;margin-bottom:20px}
+  .dot{width:9px;height:9px;border-radius:50%;background:var(--linie)}
+  .dot.on{background:var(--sage)}
+  .dot.done{background:var(--rosa)}
+  .frage{font-family:var(--serif);font-weight:600;font-size:27px;line-height:1.25;color:var(--mauve);text-align:center;margin-bottom:4px}
+  .frage-sub{font-size:14px;color:var(--leise);text-align:center;margin-bottom:22px}
+  .opt{display:block;width:100%;text-align:left;border:1px solid var(--linie);border-radius:16px;background:var(--papier);padding:16px 18px;font-family:var(--sans);font-size:16.5px;color:var(--tinte);cursor:pointer;margin-top:12px;transition:all .15s;line-height:1.35}
+  .opt:hover{border-color:var(--sage);background:#fff;transform:translateY(-1px)}
+  .mini{text-align:center;font-size:13px;color:var(--leise);margin-top:18px}
+  .mini a{color:var(--rosa-d)}
+  /* Ergebnis */
+  .res-ey{text-align:center;font-size:12px;letter-spacing:.22em;text-transform:uppercase;font-weight:700;margin-bottom:8px}
+  .res-titel{font-family:var(--serif);font-weight:600;font-size:34px;line-height:1.1;text-align:center;color:var(--mauve);margin-bottom:4px}
+  .badge{display:block;width:84px;height:84px;margin:0 auto 14px;border-radius:50%;display:flex;align-items:center;justify-content:center}
+  .badge svg{width:42px;height:42px}
+  .res-text{font-size:16.5px;color:var(--tinte);text-align:center;margin:16px 0}
+  .res-leit{font-family:var(--serif);font-style:italic;font-size:23px;line-height:1.3;text-align:center;margin:20px 0;padding:18px;border-radius:18px;background:var(--papier-2)}
+  .echo{font-size:14px;color:var(--leise);text-align:center;font-style:italic;margin-bottom:6px}
+  .cta{background:linear-gradient(160deg,#fff, var(--papier-2));border:1px solid var(--linie);border-radius:18px;padding:20px;margin-top:22px;text-align:center}
+  .cta p{font-size:15.5px;color:var(--tinte);margin-bottom:4px}
+  .foot{text-align:center;font-size:12px;color:var(--leise);margin-top:22px}
+  .foot a{color:var(--sage-d);text-decoration:none;font-weight:700}
+  .hidden{display:none}
+  .fade{animation:f .3s ease}
+  @keyframes f{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="brand">
+    <div class="wm">Inner<em>Vision</em></div>
+    <div class="ch">Kerstin Püringer</div>
+  </div>
+
+  <!-- INTRO -->
+  <div class="card fade" id="intro">
+    <h1>Spür <em>hin</em></h1>
+    <div class="sub">Dein innerer Friedens Check</div>
+    <p class="leit"><b>Wenn es deinen inneren Frieden kostet,<br>dann ist es zu teuer.</b></p>
+    <p class="intro-txt">Du stehst vor einer Entscheidung oder hast gerade eine getroffen, die sich komisch anfühlt? Dann spür kurz hin, statt zu grübeln. Im Human Design zeigt dir dein Körper, ob du für dich oder gegen dich entschieden hast.</p>
+    <label class="q" for="dec">Um welche Entscheidung geht es?</label>
+    <textarea id="dec" placeholder="Zum Beispiel, soll ich den Job annehmen, zusagen, bleiben oder gehen ..."></textarea>
+    <button class="btn" id="startBtn">Jetzt hinspüren</button>
+    <p class="mini">Ganz für dich. Nichts wird gespeichert oder verschickt.</p>
+  </div>
+
+  <!-- FRAGEN -->
+  <div class="card fade hidden" id="quiz">
+    <div class="dots" id="dots"></div>
+    <div class="frage" id="frageText"></div>
+    <div class="frage-sub" id="frageSub"></div>
+    <div id="opts"></div>
+    <button class="btn ghost" id="backBtn">Zurück</button>
+  </div>
+
+  <!-- ERGEBNIS -->
+  <div class="card fade hidden" id="result">
+    <div class="badge" id="badge"></div>
+    <div class="res-ey" id="resEy"></div>
+    <div class="res-titel" id="resTitel"></div>
+    <p class="echo" id="echo"></p>
+    <p class="res-text" id="resText"></p>
+    <p class="res-leit" id="resLeit"></p>
+    <div class="cta">
+      <p>In deiner Human Design Analyse schauen wir uns deine Autorität und deine Strategie an. Also wie genau du entscheiden solltest, damit es sich richtig anfühlt.</p>
+      <p style="font-weight:700;color:var(--mauve)">Damit du nie wieder gegen dich selbst entscheidest.</p>
+      <a class="btn rosa" href="https://www.innervision.at" target="_blank" rel="noopener" style="margin-top:14px">Schreib mir</a>
+    </div>
+    <button class="btn ghost" id="againBtn">Nochmal hinspüren</button>
+    <div class="foot">Kerstin Püringer · <a href="https://www.innervision.at" target="_blank" rel="noopener">www.innervision.at</a></div>
+  </div>
+</div>
+
+<script>
+const fragen = [
+  { f:"Stell dir vor, die Entscheidung ist gefallen.", s:"Wie fühlt sich dein Körper an?",
+    a:[ {t:"Leicht und offen", w:1}, {t:"Eng und schwer", w:0}, {t:"So richtig spür ich es noch nicht", w:0.5} ] },
+  { f:"Und dein Atem?", s:"Wenn du an das Ja denkst.",
+    a:[ {t:"Er fließt frei", w:1}, {t:"Er wird flach und stockt", w:0}, {t:"Weiß ich gerade nicht", w:0.5} ] },
+  { f:"Wirst du innerlich größer oder kleiner?", s:"Bei dem Gedanken an die Entscheidung.",
+    a:[ {t:"Größer, ich richte mich auf", w:1}, {t:"Kleiner, ich zieh mich zusammen", w:0}, {t:"Mal so, mal so", w:0.5} ] },
+  { f:"Woher kommt dein Ja gerade?", s:"Sei ganz ehrlich zu dir.",
+    a:[ {t:"Aus dem Bauch, es fühlt sich stimmig an", w:1}, {t:"Aus dem Kopf, weil man das eben so macht", w:0}, {t:"Aus Angst, was andere denken", w:0} ] },
+  { f:"Was spürst du stärker?", s:"Wenn du dich so entscheidest.",
+    a:[ {t:"Erleichterung", w:1}, {t:"Druck", w:0}, {t:"Beides gleich stark", w:0.5} ] }
+];
+
+let i=0, score=0, antworten=[];
+const $ = id=>document.getElementById(id);
+
+function zeigeDots(){
+  const d=$("dots"); d.innerHTML="";
+  fragen.forEach((_,k)=>{
+    const s=document.createElement("div");
+    s.className="dot"+(k<i?" done":k===i?" on":"");
+    d.appendChild(s);
+  });
+}
+function zeigeFrage(){
+  const q=fragen[i];
+  $("frageText").textContent=q.f;
+  $("frageSub").textContent=q.s;
+  const o=$("opts"); o.innerHTML="";
+  q.a.forEach((opt,k)=>{
+    const b=document.createElement("button");
+    b.className="opt"; b.textContent=opt.t;
+    b.onclick=()=>waehle(opt.w);
+    o.appendChild(b);
+  });
+  $("backBtn").style.visibility = i===0 ? "hidden" : "visible";
+  zeigeDots();
+  $("quiz").classList.remove("fade"); void $("quiz").offsetWidth; $("quiz").classList.add("fade");
+}
+function waehle(w){
+  antworten[i]=w;
+  i++;
+  if(i<fragen.length){ zeigeFrage(); }
+  else { zeigeErgebnis(); }
+}
+$("backBtn").onclick=()=>{ if(i>0){ i--; zeigeFrage(); } };
+
+$("startBtn").onclick=()=>{
+  i=0; antworten=[];
+  $("intro").classList.add("hidden");
+  $("result").classList.add("hidden");
+  $("quiz").classList.remove("hidden");
+  zeigeFrage();
+};
+$("againBtn").onclick=()=>{
+  $("result").classList.add("hidden");
+  $("intro").classList.remove("hidden");
+  $("intro").classList.remove("fade"); void $("intro").offsetWidth; $("intro").classList.add("fade");
+};
+
+function icon(name){
+  if(name==="peace") return '<svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>';
+  if(name==="stop")  return '<svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 8v5M12 16.5v.01"/></svg>';
+  return '<svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v18M3 12h18" opacity="0"/><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>';
+}
+
+function zeigeErgebnis(){
+  const sum = antworten.reduce((a,b)=>a+b,0);
+  const max = fragen.length; // 5
+  const dec = $("dec").value.trim();
+  $("echo").textContent = dec ? '„'+dec+'"' : '';
+  let ey,titel,text,leit,col,ic;
+
+  if(sum >= max*0.7){
+    col="var(--sage)"; ic="peace";
+    ey="Dein Körper sagt Ja";
+    titel="Das tut dir gut";
+    text="Du wirst leichter, dein Atem fließt und du richtest dich auf. So fühlt sich eine Entscheidung an, die wirklich aus dir heraus kommt, aus deiner eigenen Autorität. Die kostet dich keine Kraft, sie gibt dir welche.";
+    leit="Wenn es sich leicht anfühlt, hast du für dich entschieden.";
+  } else if(sum <= max*0.4){
+    col="var(--rosa-d)"; ic="stop";
+    ey="Spür nochmal hin";
+    titel="Das ist zu teuer";
+    text="Dein Körper zieht sich zusammen, dein Atem wird flach. Diese Entscheidung kostet dich gerade deinen inneren Frieden. Vielleicht hast du gegen deine Strategie oder deine Autorität entschieden, also gegen deine Art, richtig für dich zu entscheiden. Dein Körper zeigt es dir ganz genau.";
+    leit="Wenn es deinen inneren Frieden kostet, dann ist es zu teuer.";
+  } else {
+    col="var(--apricot-d)"; ic="wait";
+    ey="Noch nicht ganz klar";
+    titel="Gib dir Zeit";
+    text="Da ist noch etwas in der Schwebe. Du musst dich heute nicht entscheiden. Je nach deiner Human Design Autorität brauchst du vielleicht eine Nacht Schlaf, ein Gespräch oder einfach mehr Zeit. Spür morgen nochmal hin, dein Körper weiß die Antwort meistens vor deinem Kopf.";
+    leit="Keine Entscheidung ist auch eine, für heute.";
+  }
+  $("badge").style.background=col;
+  $("badge").innerHTML=icon(ic);
+  $("resEy").textContent=ey; $("resEy").style.color=col;
+  $("resTitel").textContent=titel;
+  $("resText").textContent=text;
+  $("resLeit").textContent=leit; $("resLeit").style.color=col;
+
+  $("quiz").classList.add("hidden");
+  $("result").classList.remove("hidden");
+  $("result").classList.remove("fade"); void $("result").offsetWidth; $("result").classList.add("fade");
+  window.scrollTo({top:0,behavior:"smooth"});
+}
+</script>
+</body>
+</html>
