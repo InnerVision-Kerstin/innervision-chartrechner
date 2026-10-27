@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Spür hin</title>
+<title>Entscheidungshilfe</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Lato:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
@@ -24,13 +24,17 @@
   .brand .wm em{font-style:italic;color:var(--rosa-d)}
   .brand .ch{font-size:10px;letter-spacing:.22em;text-transform:uppercase;color:var(--sage-d);font-weight:700;margin-top:2px}
   .card{background:var(--karte);border:1px solid var(--linie);border-radius:24px;padding:30px 24px;box-shadow:0 14px 34px -24px rgba(44,31,26,.45);margin-top:16px}
-  h1{font-family:var(--serif);font-weight:600;font-size:clamp(40px,12vw,54px);line-height:1;color:var(--mauve);text-align:center}
+  h1{font-family:var(--serif);font-weight:600;font-size:clamp(30px,8.4vw,43px);line-height:1.02;color:var(--mauve);text-align:center;letter-spacing:-.01em}
   h1 em{font-style:italic;color:var(--rosa-d)}
-  .sub{text-align:center;font-size:12px;letter-spacing:.2em;text-transform:uppercase;color:var(--sage-d);font-weight:700;margin-top:12px}
-  .leit{font-family:var(--serif);font-style:italic;font-size:24px;line-height:1.3;color:var(--tinte);text-align:center;margin:22px 0 6px}
+  .sub{text-align:center;font-size:12px;letter-spacing:.18em;text-transform:uppercase;color:var(--sage-d);font-weight:700;margin-top:12px}
+  .leit{font-family:var(--serif);font-style:italic;font-size:23px;line-height:1.3;color:var(--tinte);text-align:center;margin:20px 0 6px}
   .leit b{font-style:normal;font-weight:600;color:var(--rosa-d)}
-  .intro-txt{font-size:16px;color:var(--leise);text-align:center;margin:18px 0 20px}
-  label.q{display:block;font-family:var(--serif);font-size:15px;color:var(--sage-d);font-weight:600;letter-spacing:.04em;text-transform:uppercase;margin-bottom:8px}
+  .intro-txt{font-size:16px;color:var(--leise);text-align:center;margin:16px 0 0}
+  .reframe{font-family:var(--serif);font-style:italic;font-size:18px;color:var(--mauve);text-align:center;margin:16px 0 0;line-height:1.35;padding-top:14px;border-top:1px solid var(--linie)}
+  .modes{display:flex;gap:8px;margin:20px 0 4px}
+  .mode{flex:1;border:1px solid var(--linie);background:var(--papier);border-radius:14px;padding:13px 8px;font-family:var(--sans);font-size:14.5px;font-weight:700;color:var(--leise);cursor:pointer;text-align:center;line-height:1.2;transition:all .15s}
+  .mode.on{background:var(--sage);color:#fff;border-color:var(--sage)}
+  label.q{display:block;font-family:var(--serif);font-size:15px;color:var(--sage-d);font-weight:600;letter-spacing:.04em;text-transform:uppercase;margin:16px 0 8px}
   textarea{width:100%;border:1px solid var(--linie);border-radius:16px;padding:14px 16px;font-family:var(--sans);font-size:16px;color:var(--tinte);background:var(--papier);resize:vertical;min-height:84px}
   textarea:focus{outline:2px solid var(--sage);outline-offset:1px}
   .btn{display:block;width:100%;border:0;border-radius:999px;background:var(--sage);color:#fff;font-family:var(--sans);font-weight:700;font-size:17px;padding:16px 22px;cursor:pointer;text-align:center;text-decoration:none;margin-top:18px;transition:background .15s}
@@ -49,10 +53,9 @@
   .opt:hover{border-color:var(--sage);background:#fff;transform:translateY(-1px)}
   .mini{text-align:center;font-size:13px;color:var(--leise);margin-top:18px}
   .mini a{color:var(--rosa-d)}
-  /* Ergebnis */
   .res-ey{text-align:center;font-size:12px;letter-spacing:.22em;text-transform:uppercase;font-weight:700;margin-bottom:8px}
   .res-titel{font-family:var(--serif);font-weight:600;font-size:34px;line-height:1.1;text-align:center;color:var(--mauve);margin-bottom:4px}
-  .badge{display:block;width:84px;height:84px;margin:0 auto 14px;border-radius:50%;display:flex;align-items:center;justify-content:center}
+  .badge{width:84px;height:84px;margin:0 auto 14px;border-radius:50%;display:flex;align-items:center;justify-content:center}
   .badge svg{width:42px;height:42px}
   .res-text{font-size:16.5px;color:var(--tinte);text-align:center;margin:16px 0}
   .res-leit{font-family:var(--serif);font-style:italic;font-size:23px;line-height:1.3;text-align:center;margin:20px 0;padding:18px;border-radius:18px;background:var(--papier-2)}
@@ -75,11 +78,18 @@
 
   <!-- INTRO -->
   <div class="card fade" id="intro">
-    <h1>Spür <em>hin</em></h1>
-    <div class="sub">Dein Entscheidungscheck</div>
+    <h1>Entscheidungs<em>hilfe</em></h1>
+    <div class="sub">Spür hin statt grübeln</div>
     <p class="leit"><b>Wenn es deinen inneren Frieden kostet,<br>dann ist es zu teuer.</b></p>
-    <p class="intro-txt">Viele von uns funktionieren nur noch und spüren vor lauter Tun gar nichts mehr. Dann entscheidet der Kopf, und der Bauch schweigt. Dieser Entscheidungscheck ist eine kleine Anleitung, wieder hinzuspüren. Du gibst deine Entscheidung ein und spürst Schritt für Schritt hin, ob sie dir wirklich guttut. Dein Körper zeigt es dir.</p>
-    <label class="q" for="dec">Um welche Entscheidung geht es?</label>
+    <p class="intro-txt">Viele von uns funktionieren nur noch und spüren vor lauter Tun gar nichts mehr. Dann entscheidet der Kopf, und der Bauch schweigt. Diese Entscheidungshilfe ist eine kleine Anleitung, wieder hinzuspüren, damit dir Entscheidungen im Alltag leichter fallen.</p>
+    <p class="reframe">Eine Entscheidung ist immer auch ein Abschied von anderen Möglichkeiten. Deshalb darf sie sich schwer anfühlen.</p>
+
+    <div class="modes" id="modes">
+      <button class="mode on" data-modus="ent">Eine Entscheidung treffen</button>
+      <button class="mode" data-modus="los">Etwas loslassen</button>
+    </div>
+
+    <label class="q" for="dec" id="decLabel">Um welche Entscheidung geht es?</label>
     <textarea id="dec" placeholder="Zum Beispiel, soll ich den Job annehmen, zusagen, bleiben oder gehen ..."></textarea>
     <button class="btn" id="startBtn">Jetzt hinspüren</button>
     <p class="mini">Ganz für dich. Nichts wird gespeichert oder verschickt.</p>
@@ -114,36 +124,68 @@
 </div>
 
 <script>
-const fragen = [
-  { f:"Stell dir vor, die Entscheidung ist gefallen.", s:"Wie fühlt sich dein Körper an?",
-    a:[ {t:"Leicht und offen", w:1}, {t:"Eng und schwer", w:0}, {t:"So richtig spür ich es noch nicht", w:0.5} ] },
-  { f:"Und dein Atem?", s:"Wenn du an das Ja denkst.",
-    a:[ {t:"Er fließt frei", w:1}, {t:"Er wird flach und stockt", w:0}, {t:"Weiß ich gerade nicht", w:0.5} ] },
-  { f:"Wirst du innerlich größer oder kleiner?", s:"Bei dem Gedanken an die Entscheidung.",
-    a:[ {t:"Größer, ich richte mich auf", w:1}, {t:"Kleiner, ich zieh mich zusammen", w:0}, {t:"Mal so, mal so", w:0.5} ] },
-  { f:"Woher kommt dein Ja gerade?", s:"Sei ganz ehrlich zu dir.",
-    a:[ {t:"Aus dem Bauch, es fühlt sich stimmig an", w:1}, {t:"Aus dem Kopf, weil man das eben so macht", w:0}, {t:"Aus Angst, was andere denken", w:0} ] },
-  { f:"Was spürst du stärker?", s:"Wenn du dich so entscheidest.",
-    a:[ {t:"Erleichterung", w:1}, {t:"Druck", w:0}, {t:"Beides gleich stark", w:0.5} ] }
-];
+const fragen = {
+  ent: [
+    { f:"Stell dir vor, die Entscheidung ist gefallen.", s:"Wie fühlt sich dein Körper an?",
+      a:[ {t:"Leicht und offen", w:1}, {t:"Eng und schwer", w:0}, {t:"So richtig spür ich es noch nicht", w:0.5} ] },
+    { f:"Und dein Atem?", s:"Wenn du an das Ja denkst.",
+      a:[ {t:"Er fließt frei", w:1}, {t:"Er wird flach und stockt", w:0}, {t:"Weiß ich gerade nicht", w:0.5} ] },
+    { f:"Wirst du innerlich größer oder kleiner?", s:"Bei dem Gedanken an die Entscheidung.",
+      a:[ {t:"Größer, ich richte mich auf", w:1}, {t:"Kleiner, ich zieh mich zusammen", w:0}, {t:"Mal so, mal so", w:0.5} ] },
+    { f:"Woher kommt dein Ja gerade?", s:"Sei ganz ehrlich zu dir.",
+      a:[ {t:"Aus dem Bauch, es fühlt sich stimmig an", w:1}, {t:"Aus dem Kopf, weil man das eben so macht", w:0}, {t:"Aus Angst, was andere denken", w:0} ] },
+    { f:"Was spürst du stärker?", s:"Wenn du dich so entscheidest.",
+      a:[ {t:"Erleichterung", w:1}, {t:"Druck", w:0}, {t:"Beides gleich stark", w:0.5} ] }
+  ],
+  los: [
+    { f:"Stell dir vor, es ist weg.", s:"Wie fühlt sich das an?",
+      a:[ {t:"Erleichtert und leichter", w:1}, {t:"Ein Stich, ich vermiss es", w:0}, {t:"Gemischt", w:0.5} ] },
+    { f:"Wann hattest du es zuletzt wirklich in der Hand?", s:"Ganz ehrlich.",
+      a:[ {t:"Kürzlich, ich nutze es", w:0}, {t:"Ewig nicht mehr", w:1}, {t:"Weiß ich gar nicht", w:0.5} ] },
+    { f:"Wenn du es anschaust, was kommt hoch?", s:"",
+      a:[ {t:"Freude, es tut mir gut", w:0}, {t:"Nur Pflicht oder schlechtes Gewissen", w:1}, {t:"Nichts Besonderes", w:0.5} ] },
+    { f:"Woran hängst du wirklich?", s:"",
+      a:[ {t:"An einem Menschen oder einer Erinnerung", w:0}, {t:"An dem Ding selbst", w:0.5}, {t:"Eigentlich an nichts, es ist nur da", w:1} ] },
+    { f:"Stell dir deinen Platz ohne es vor.", s:"",
+      a:[ {t:"Leichter und freier", w:1}, {t:"Leerer, da fehlt was", w:0}, {t:"Beides", w:0.5} ] }
+  ]
+};
 
-let i=0, score=0, antworten=[];
+const labels = {
+  ent: { q:"Um welche Entscheidung geht es?", ph:"Zum Beispiel, soll ich den Job annehmen, zusagen, bleiben oder gehen ..." },
+  los: { q:"Was willst du vielleicht loslassen?", ph:"Zum Beispiel ein altes Kleid, ein Möbelstück, eine Aufgabe, eine Gewohnheit ..." }
+};
+
+let modus="ent", i=0, antworten=[];
 const $ = id=>document.getElementById(id);
 
+// Modus Umschalter
+document.querySelectorAll("#modes .mode").forEach(b=>{
+  b.onclick=()=>{
+    document.querySelectorAll("#modes .mode").forEach(x=>x.classList.remove("on"));
+    b.classList.add("on");
+    modus=b.dataset.modus;
+    $("decLabel").textContent=labels[modus].q;
+    $("dec").placeholder=labels[modus].ph;
+  };
+});
+
 function zeigeDots(){
+  const liste=fragen[modus];
   const d=$("dots"); d.innerHTML="";
-  fragen.forEach((_,k)=>{
+  liste.forEach((_,k)=>{
     const s=document.createElement("div");
     s.className="dot"+(k<i?" done":k===i?" on":"");
     d.appendChild(s);
   });
 }
 function zeigeFrage(){
-  const q=fragen[i];
+  const q=fragen[modus][i];
   $("frageText").textContent=q.f;
   $("frageSub").textContent=q.s;
+  $("frageSub").style.display=q.s?"block":"none";
   const o=$("opts"); o.innerHTML="";
-  q.a.forEach((opt,k)=>{
+  q.a.forEach(opt=>{
     const b=document.createElement("button");
     b.className="opt"; b.textContent=opt.t;
     b.onclick=()=>waehle(opt.w);
@@ -154,10 +196,8 @@ function zeigeFrage(){
   $("quiz").classList.remove("fade"); void $("quiz").offsetWidth; $("quiz").classList.add("fade");
 }
 function waehle(w){
-  antworten[i]=w;
-  i++;
-  if(i<fragen.length){ zeigeFrage(); }
-  else { zeigeErgebnis(); }
+  antworten[i]=w; i++;
+  if(i<fragen[modus].length){ zeigeFrage(); } else { zeigeErgebnis(); }
 }
 $("backBtn").onclick=()=>{ if(i>0){ i--; zeigeFrage(); } };
 
@@ -177,35 +217,46 @@ $("againBtn").onclick=()=>{
 function icon(name){
   if(name==="peace") return '<svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>';
   if(name==="stop")  return '<svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 8v5M12 16.5v.01"/></svg>';
-  return '<svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v18M3 12h18" opacity="0"/><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>';
+  if(name==="heart") return '<svg viewBox="0 0 24 24" fill="#fff" stroke="none"><path d="M12 21s-6.8-4.2-9.3-8.3C1.1 9.4 2.6 5.6 6 5.6c2 0 3.2 1.3 4 2.4.8-1.1 2-2.4 4-2.4 3.4 0 4.9 3.8 3.3 7.1C18.8 16.8 12 21 12 21z"/></svg>';
+  return '<svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>';
 }
 
 function zeigeErgebnis(){
   const sum = antworten.reduce((a,b)=>a+b,0);
-  const max = fragen.length; // 5
   const dec = $("dec").value.trim();
   $("echo").textContent = dec ? '„'+dec+'"' : '';
   let ey,titel,text,leit,col,ic;
 
-  if(sum >= max*0.7){
-    col="var(--sage)"; ic="peace";
-    ey="Dein Körper sagt Ja";
-    titel="Das tut dir gut";
-    text="Du wirst leichter, dein Atem fließt und du richtest dich auf. So fühlt sich eine Entscheidung an, die wirklich aus dir heraus kommt, aus deiner eigenen Autorität. Die kostet dich keine Kraft, sie gibt dir welche.";
-    leit="Wenn es sich leicht anfühlt, hast du für dich entschieden.";
-  } else if(sum <= max*0.4){
-    col="var(--rosa-d)"; ic="stop";
-    ey="Spür nochmal hin";
-    titel="Das ist zu teuer";
-    text="Dein Körper zieht sich zusammen, dein Atem wird flach. Diese Entscheidung kostet dich gerade deinen inneren Frieden. Vielleicht hast du gegen deine Strategie oder deine Autorität entschieden, also gegen deine Art, richtig für dich zu entscheiden. Dein Körper zeigt es dir ganz genau.";
-    leit="Wenn es deinen inneren Frieden kostet, dann ist es zu teuer.";
+  if(modus==="ent"){
+    if(sum >= 3.5){
+      col="var(--sage)"; ic="peace"; ey="Dein Körper sagt Ja"; titel="Das tut dir gut";
+      text="Du wirst leichter, dein Atem fließt und du richtest dich auf. So fühlt sich eine Entscheidung an, die wirklich aus dir heraus kommt, aus deiner eigenen Autorität. Die kostet dich keine Kraft, sie gibt dir welche.";
+      leit="Wenn es sich leicht anfühlt, hast du für dich entschieden.";
+    } else if(sum <= 2.0){
+      col="var(--rosa-d)"; ic="stop"; ey="Spür nochmal hin"; titel="Das ist zu teuer";
+      text="Dein Körper zieht sich zusammen, dein Atem wird flach. Diese Entscheidung kostet dich gerade deinen inneren Frieden. Vielleicht hast du gegen deine Strategie oder deine Autorität entschieden, also gegen deine Art, richtig für dich zu entscheiden. Dein Körper zeigt es dir ganz genau.";
+      leit="Wenn es deinen inneren Frieden kostet, dann ist es zu teuer.";
+    } else {
+      col="var(--apricot-d)"; ic="wait"; ey="Noch nicht ganz klar"; titel="Gib dir Zeit";
+      text="Da ist noch etwas in der Schwebe. Du musst dich heute nicht entscheiden. Je nach deiner Human Design Autorität brauchst du vielleicht eine Nacht Schlaf, ein Gespräch oder einfach mehr Zeit. Spür morgen nochmal hin, dein Körper weiß die Antwort meistens vor deinem Kopf.";
+      leit="Keine Entscheidung ist auch eine, für heute.";
+    }
   } else {
-    col="var(--apricot-d)"; ic="wait";
-    ey="Noch nicht ganz klar";
-    titel="Gib dir Zeit";
-    text="Da ist noch etwas in der Schwebe. Du musst dich heute nicht entscheiden. Je nach deiner Human Design Autorität brauchst du vielleicht eine Nacht Schlaf, ein Gespräch oder einfach mehr Zeit. Spür morgen nochmal hin, dein Körper weiß die Antwort meistens vor deinem Kopf.";
-    leit="Keine Entscheidung ist auch eine, für heute.";
+    if(sum >= 3.5){
+      col="var(--sage)"; ic="peace"; ey="Du darfst loslassen"; titel="Lass es ziehen";
+      text="Du hältst nur noch aus Gewohnheit fest. Es darf gehen. Was Platz macht, schafft Platz für Neues. Und das Gute, was dein Herz wirklich braucht, erkennst du daran, dass es dich leicht macht, nicht schwer.";
+      leit="Was dich leichter macht, wenn es geht, darf gehen.";
+    } else if(sum <= 2.0){
+      col="var(--rosa-d)"; ic="heart"; ey="Es darf bleiben"; titel="Behalt es";
+      text="Da hängt noch etwas Echtes dran, eine Freude, ein Mensch, eine Erinnerung. Das darf bleiben. Loslassen heißt nicht, alles wegwerfen, sondern nur das, was dich nicht mehr trägt.";
+      leit="Was dich wärmt, darf bleiben.";
+    } else {
+      col="var(--apricot-d)"; ic="wait"; ey="Noch unsicher"; titel="Leg es zur Seite";
+      text="Du bist dir noch nicht sicher. Leg es für ein paar Tage in eine Kiste, aus den Augen. Vermisst du es nicht, darf es gehen. Ziept es, dann hol es zurück. So gehst du die Gefühlswelle durch, ohne es zu bereuen.";
+      leit="Im Zweifel gib dir ein paar Tage.";
+    }
   }
+
   $("badge").style.background=col;
   $("badge").innerHTML=icon(ic);
   $("resEy").textContent=ey; $("resEy").style.color=col;
